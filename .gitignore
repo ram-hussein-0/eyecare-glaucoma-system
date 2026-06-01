@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+fastenv/
+
+# Environment / secrets
+.env
+.env.local
+*.env
+
+# macOS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# Runtime database and generated local data
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/chroma_db/
+data/vector_index/
+data/chroma_test/
+data/reports/
+data/uploads/
+data/tmp/
+data/temp/
+
+# Generated exports / cleanup / old patch scripts
+PROJECT_FULL_EXPORT*
+_cleanup_archive_before_git_*/
+_backup_before_*/
+phase_*/
+apply_*.py
+replace_faiss_with_numpy_vector_store.py
+emergency_repair_phase_2_1.py
+export_project_markdown.py
+
+# Logs
+*.log
+
+# Large model weights - use Git LFS or keep local if needed
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.h5
+models/*.safetensors
+models/*.pkl

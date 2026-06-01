@@ -1,0 +1,375 @@
+
+:root{--bg:#f6f9fc;--surface:#fff;--surface2:#f8fbff;--text:#0f172a;--muted:#64748b;--line:#e2e8f0;--primary:#0f766e;--primary2:#2563eb;--success:#16a34a;--warning:#d97706;--danger:#dc2626;--shadow:0 22px 55px rgba(15,23,42,.08)}
+html,body,[class*="css"]{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.stApp{background:radial-gradient(circle at top left,rgba(37,99,235,.10),transparent 30%),linear-gradient(180deg,#f8fbff 0%,#f6f9fc 100%);color:var(--text)}.main .block-container{padding-top:1.4rem!important;padding-bottom:3.6rem!important;max-width:1180px!important}section[data-testid="stSidebar"]{background:linear-gradient(180deg,#f8fafc 0%,#eef6ff 100%);border-right:1px solid rgba(148,163,184,.22)}section[data-testid="stSidebarNav"]{display:none!important}
+h1,h2,h3{letter-spacing:-.025em;color:#0f172a}.app-hero{position:relative;overflow:hidden;padding:38px 42px;border-radius:34px;background:linear-gradient(135deg,#0f766e 0%,#0ea5e9 46%,#2563eb 100%);color:white;margin:8px 0 24px;box-shadow:0 26px 70px rgba(37,99,235,.23)}.app-hero:after{content:"";position:absolute;right:-90px;top:-120px;width:310px;height:310px;border-radius:999px;background:rgba(255,255,255,.16)}.app-hero *{position:relative;z-index:1}.app-kicker{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.92);font-weight:750;text-transform:uppercase;font-size:12px;letter-spacing:.12em;background:rgba(255,255,255,.16);padding:8px 12px;border-radius:999px;margin-bottom:16px}.app-hero h1{color:white;font-size:clamp(34px,4vw,54px);line-height:1.02;margin:0 0 12px}.app-hero p{color:rgba(255,255,255,.95);font-size:17px;line-height:1.75;margin:0;max-width:880px}
+.brand-box{padding:18px 14px 16px;margin:8px 2px 14px;border-radius:24px;background:rgba(255,255,255,.78);border:1px solid rgba(226,232,240,.92);box-shadow:0 14px 34px rgba(15,23,42,.055)}.brand-row{display:flex;align-items:center;gap:12px}.brand-logo{width:44px;height:44px;border-radius:14px;box-shadow:0 12px 28px rgba(37,99,235,.22)}.brand-title{font-weight:900;font-size:18px;letter-spacing:-.04em;color:#0f172a}.brand-sub{font-size:12px;color:#64748b;margin-top:2px}.role-chip{display:inline-flex;align-items:center;border-radius:999px;background:#ecfeff;border:1px solid #cffafe;color:#0e7490;font-size:12px;font-weight:800;padding:6px 10px;margin-top:12px}.nav-section{margin:12px 0 6px;color:#64748b;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:0 8px}.nav-link{display:flex;align-items:center;gap:10px;text-decoration:none!important;color:#334155!important;padding:11px 12px;margin:4px 0;border-radius:16px;border:1px solid transparent;font-weight:720}.nav-link:hover{background:white;border-color:#e2e8f0;box-shadow:0 10px 26px rgba(15,23,42,.06);color:#0f172a!important}.nav-icon{width:19px;height:19px;stroke:#2563eb;stroke-width:2.15;fill:none;stroke-linecap:round;stroke-linejoin:round}.logout-note{font-size:12px;color:#64748b;padding:8px 10px 0}
+.soft-card,.feature-card,.report-card,.doctor-card,.appointment-card,.assistant-card{background:rgba(255,255,255,.92);border:1px solid rgba(226,232,240,.95);border-radius:26px;padding:24px;box-shadow:0 18px 44px rgba(15,23,42,.065);margin-bottom:16px}.feature-card,.stat-card{min-height:205px;height:100%;display:flex;flex-direction:column}.feature-icon{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:linear-gradient(135deg,rgba(15,118,110,.12),rgba(37,99,235,.14));margin-bottom:13px}.feature-icon svg{width:24px;height:24px;stroke:#2563eb}.feature-card h3,.soft-card h3,.report-card h3{margin:0 0 8px;color:#0f172a}.feature-card p,.soft-card p,.report-card p{color:#475569;line-height:1.65;margin:0}.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin:16px 0 24px}.card-grid .feature-card{margin:0}.stat-card{background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);border:1px solid rgba(226,232,240,.95);border-radius:24px;padding:22px;box-shadow:0 18px 42px rgba(15,23,42,.06)}.stat-label{color:#64748b;font-size:13px;font-weight:750;text-transform:uppercase;letter-spacing:.08em}.stat-value{color:#0f172a;font-size:clamp(26px,3vw,34px);line-height:1.08;font-weight:850;margin-top:10px;overflow-wrap:anywhere}.stat-note{color:#94a3b8;font-size:13px;margin-top:auto;padding-top:14px;line-height:1.5}.badge{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:999px;font-weight:850;font-size:12px;letter-spacing:.01em;max-width:100%;white-space:normal;text-align:center;line-height:1.25;overflow-wrap:anywhere;word-break:normal}.badge-success{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}.badge-warning{background:#fef3c7;color:#92400e;border:1px solid #fde68a}.badge-danger{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.badge-info{background:#dbeafe;color:#1d4ed8;border:1px solid #bfdbfe}.badge-muted{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0}.status-block{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0}.status-block .badge{border-radius:18px;padding:10px 14px;max-width:100%}.info-strip{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:22px;background:linear-gradient(135deg,#eff6ff,#ecfeff);border:1px solid #dbeafe;color:#1e3a8a;margin:14px 0}.section-title{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:26px 0 14px}.section-title h2{margin:0;font-size:28px}.section-title p{margin:5px 0 0;color:#64748b}.report-preview-shell{border-radius:30px;overflow:hidden;border:1px solid rgba(226,232,240,.95);box-shadow:0 22px 60px rgba(15,23,42,.10);background:white;margin:16px 0 22px}.preview-label{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#ecfeff;color:#0e7490;font-weight:800;font-size:12px;border:1px solid #cffafe}div[data-testid="stMetric"]{background:rgba(255,255,255,.9);border:1px solid rgba(226,232,240,.9);padding:18px;border-radius:22px;box-shadow:0 16px 38px rgba(15,23,42,.055)}button[kind="primary"],.stButton button,.stDownloadButton button,.stFormSubmitButton button{border-radius:14px!important;font-weight:750!important;border:1px solid rgba(37,99,235,.22)!important;box-shadow:0 10px 26px rgba(37,99,235,.08)}input,textarea,[data-baseweb="select"]>div,[data-baseweb="input"]>div{border-radius:14px!important}.stTabs [data-baseweb="tab-list"]{gap:6px;background:rgba(255,255,255,.68);padding:6px;border-radius:18px;border:1px solid rgba(226,232,240,.9)}.stTabs [data-baseweb="tab"]{border-radius:14px;padding:10px 16px;font-weight:650}.stTabs [aria-selected="true"]{background:#fff;box-shadow:0 8px 22px rgba(15,23,42,.07)}[data-testid="stChatMessage"]{border-radius:22px;background:rgba(255,255,255,.85);border:1px solid rgba(226,232,240,.8);box-shadow:0 12px 30px rgba(15,23,42,.05);padding:1rem}@media(max-width:900px){.app-hero{padding:28px;border-radius:26px}.soft-card,.feature-card,.report-card,.doctor-card,.appointment-card{padding:19px}.nav-link{padding:10px}}
+
+
+/* Phase 1.2: keep only the custom role-based sidebar navigation. */
+[data-testid="stSidebarNav"],
+div[data-testid="stSidebarNav"],
+nav[data-testid="stSidebarNav"],
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+section[data-testid="stSidebar"] > div:first-child { padding-top: 1rem !important; }
+
+
+/* Phase 1.4 stability and visual polish */
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] { display: none !important; }
+section[data-testid="stSidebar"] { min-width: 330px !important; }
+.brand-box { display:flex; align-items:center; gap:18px; padding:22px; border-radius:28px; background:rgba(255,255,255,.94); border:1px solid rgba(226,232,240,.95); box-shadow:0 18px 42px rgba(15,23,42,.08); margin:16px 4px 22px; }
+.brand-logo { width:64px; height:64px; min-width:64px; display:flex; align-items:center; justify-content:center; border-radius:18px; color:#fff; background:#0f766e; box-shadow:0 12px 30px rgba(15,118,110,.22); }
+.brand-logo svg { width:40px; height:40px; }
+.brand-title { font-size:24px; font-weight:900; color:#0f172a; letter-spacing:-.04em; }
+.brand-subtitle { color:#64748b; font-size:14px; line-height:1.35; margin-top:4px; }
+.role-pill { display:inline-flex; padding:9px 16px; border-radius:999px; background:#ecfeff; color:#0e7490; border:1px solid #cffafe; font-weight:850; margin:0 0 10px 10px; }
+.current-user { color:#64748b; font-weight:750; margin:0 0 24px 14px; }
+.sidebar-section-label { margin:24px 0 10px 12px; font-size:12px; letter-spacing:.20em; color:#64748b; text-transform:uppercase; font-weight:900; }
+.account-label { margin-top:28px; }
+section[data-testid="stSidebar"] a { font-weight:800; font-size:18px; color:#334155 !important; border-radius:16px; padding:10px 12px; }
+section[data-testid="stSidebar"] a:hover { background:#eaf2ff; color:#1d4ed8 !important; }
+.badge { white-space: normal !important; max-width: 100% !important; overflow-wrap: anywhere !important; word-break: normal !important; line-height: 1.25 !important; text-align:center; }
+.equal-card, .feature-card, .soft-card, .report-card, .doctor-card, .appointment-card { height: 100%; min-height: 178px; display:flex; flex-direction:column; justify-content:flex-start; }
+.feature-card { min-height: 210px !important; }
+.feature-card h3 { min-height: 56px; display:flex; align-items:flex-end; }
+.feature-card p { margin-top:auto; }
+.feature-icon, .info-icon { width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:16px; background:linear-gradient(135deg, rgba(15,118,110,.12), rgba(37,99,235,.14)); color:#2563eb; }
+.feature-icon svg, .info-icon svg { width:27px; height:27px; }
+.info-icon { min-width:48px; }
+.stat-card.aligned-stat-card, .stat-card { min-height: 170px !important; display:flex !important; flex-direction:column !important; justify-content:flex-start !important; }
+.stat-label { min-height: 48px !important; display:flex !important; align-items:flex-start !important; line-height:1.35 !important; }
+.stat-value { height: 58px !important; display:flex !important; align-items:center !important; margin-top: 8px !important; line-height:1 !important; }
+.stat-note { margin-top:auto !important; }
+.doctor-card-head, .appointment-head, .report-card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; }
+.doctor-card h3, .appointment-card h3, .report-card h3 { font-size:26px; margin:14px 0 8px; }
+.doctor-card p, .appointment-card p, .report-card p { color:#475569; line-height:1.65; margin:0; }
+.doctor-meta { text-align:right; min-width:180px; }
+.mini-badges { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+.muted-small { color:#94a3b8 !important; font-size:13px !important; margin-top:12px !important; }
+[data-testid="stPageLink"] a { text-decoration: none !important; }
+@media (max-width: 900px) { section[data-testid="stSidebar"] { min-width: auto !important; } .doctor-card-head, .appointment-head, .report-card-head { flex-direction:column; } .doctor-meta { text-align:left; } }
+
+
+/* Phase 1.5: remove ugly unicode nav symbols and prevent oversized inline SVG during reruns */
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"] { display: none !important; }
+section[data-testid="stSidebar"] .stPageLink a,
+section[data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 48px !important;
+  padding: 12px 14px !important;
+  border-radius: 18px !important;
+  font-weight: 780 !important;
+  letter-spacing: -0.01em !important;
+  color: #1f2937 !important;
+  text-decoration: none !important;
+}
+section[data-testid="stSidebar"] .stPageLink a::before,
+section[data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"]::before {
+  content: "" !important;
+  width: 11px !important;
+  height: 11px !important;
+  border-radius: 999px !important;
+  background: #2563eb !important;
+  box-shadow: 0 0 0 5px rgba(37,99,235,.10) !important;
+  flex: 0 0 11px !important;
+}
+section[data-testid="stSidebar"] .stPageLink a:hover,
+section[data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"]:hover {
+  background: rgba(37,99,235,.08) !important;
+}
+section[data-testid="stSidebar"] .stPageLink a[aria-current="page"],
+section[data-testid="stSidebar"] a[data-testid="stPageLink-NavLink"][aria-current="page"] {
+  background: #eaf2ff !important;
+  box-shadow: inset 0 0 0 1px rgba(37,99,235,.10) !important;
+}
+.brand-logo svg, .feature-icon svg, .info-icon svg, .ui-line-icon {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+}
+.brand-logo { color: #ffffff !important; }
+.feature-icon, .info-icon { color: #2563eb !important; }
+.st-emotion-cache-1v0mbdj svg { max-width: 42px !important; max-height: 42px !important; }
+.aligned-stat-card { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; min-height: 180px !important; }
+.aligned-stat-card .stat-label { min-height: 52px !important; display: flex !important; align-items: flex-start !important; }
+.aligned-stat-card .stat-value { line-height: 1 !important; margin-top: 12px !important; }
+
+/* ===== Phase 1.6 — Clean layout, custom nav icons, no Streamlit chrome ===== */
+:root {--icon-home: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M3%2011.5%2012%204l9%207.5%27%2F%3E%3Cpath%20d%3D%27M5%2010.5V21h14V10.5%27%2F%3E%3Cpath%20d%3D%27M9%2021v-6h6v6%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-login: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M15%203h4a2%202%200%200%201%202%202v14a2%202%200%200%201-2%202h-4%27%2F%3E%3Cpath%20d%3D%27M10%2017l5-5-5-5M15%2012H3%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-dashboard: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%273%27%20y%3D%273%27%20width%3D%277%27%20height%3D%277%27%20rx%3D%272%27%2F%3E%3Crect%20x%3D%2714%27%20y%3D%273%27%20width%3D%277%27%20height%3D%277%27%20rx%3D%272%27%2F%3E%3Crect%20x%3D%273%27%20y%3D%2714%27%20width%3D%277%27%20height%3D%277%27%20rx%3D%272%27%2F%3E%3Crect%20x%3D%2714%27%20y%3D%2714%27%20width%3D%277%27%20height%3D%277%27%20rx%3D%272%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-screen: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M4%207V5a1%201%200%200%201%201-1h2M17%204h2a1%201%200%200%201%201%201v2M20%2017v2a1%201%200%200%201-1%201h-2M7%2020H5a1%201%200%200%201-1-1v-2%27%2F%3E%3Cpath%20d%3D%27M7%2012s2-3%205-3%205%203%205%203-2%203-5%203-5-3-5-3Z%27%2F%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%271.5%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-calendar: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Crect%20x%3D%273%27%20y%3D%274%27%20width%3D%2718%27%20height%3D%2717%27%20rx%3D%274%27%2F%3E%3Cpath%20d%3D%27M8%202v4M16%202v4M3%209h18%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-appointments: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%279%27%2F%3E%3Cpath%20d%3D%27M12%207v5l3%202%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-reports: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M14%202H7a3%203%200%200%200-3%203v14a3%203%200%200%200%203%203h10a3%203%200%200%200%203-3V8Z%27%2F%3E%3Cpath%20d%3D%27M14%202v6h6M8%2013h8M8%2017h6%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-assistant: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M12%203l1.6%205.2L19%2010l-5.4%201.8L12%2017l-1.6-5.2L5%2010l5.4-1.8L12%203Z%27%2F%3E%3Cpath%20d%3D%27M19%2015l.8%202.4L22%2018l-2.2.6L19%2021l-.8-2.4L16%2018l2.2-.6L19%2015Z%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-doctor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M12%2012a5%205%200%201%200%200-10%205%205%200%200%200%200%2010Z%27%2F%3E%3Cpath%20d%3D%27M4%2022a8%208%200%200%201%2016%200%27%2F%3E%3Cpath%20d%3D%27M16%2018h4M18%2016v4%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-schedule: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M4%204h16v16H4z%27%2F%3E%3Cpath%20d%3D%27M8%202v4M16%202v4M4%2010h16M8%2014h3M8%2017h5%27%2F%3E%3C%2Fsvg%3E");}
+:root {--icon-admin: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%271.9%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M12%2022s8-4%208-10V5l-8-3-8%203v7c0%206%208%2010%208%2010Z%27%2F%3E%3Cpath%20d%3D%27M9%2012l2%202%204-5%27%2F%3E%3C%2Fsvg%3E");}
+
+/* Hide the Streamlit top chrome that creates the empty white band with Deploy/menu. */
+header[data-testid="stHeader"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"],
+#MainMenu,
+footer {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+}
+
+.stApp, div[data-testid="stAppViewContainer"] {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+div[data-testid="stAppViewContainer"] > .main {
+  padding-top: 0 !important;
+}
+
+.main .block-container {
+  padding-top: 0.75rem !important;
+  max-width: min(1560px, calc(100vw - 2.5rem)) !important;
+  width: 100% !important;
+  padding-left: clamp(1rem, 2.4vw, 3rem) !important;
+  padding-right: clamp(1rem, 2.4vw, 3rem) !important;
+}
+
+/* Keep native Streamlit navigation hidden and style our role-based page links. */
+section[data-testid="stSidebar"] [data-testid="stSidebarNav"],
+section[data-testid="stSidebar"] nav {
+  display: none !important;
+}
+
+section[data-testid="stSidebar"] a {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  min-height: 58px !important;
+  padding: 14px 18px !important;
+  border-radius: 20px !important;
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  letter-spacing: .005em !important;
+  text-decoration: none !important;
+  transition: background .16s ease, transform .16s ease, box-shadow .16s ease !important;
+}
+
+section[data-testid="stSidebar"] a:hover {
+  background: rgba(37, 99, 235, .08) !important;
+  transform: translateX(2px);
+}
+
+section[data-testid="stSidebar"] a[aria-current="page"],
+section[data-testid="stSidebar"] a:focus {
+  background: linear-gradient(135deg, #eaf2ff, #f3fbff) !important;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, .08) !important;
+}
+
+section[data-testid="stSidebar"] a::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  background: #2563eb !important;
+  opacity: .96 !important;
+  -webkit-mask: var(--nav-icon, var(--icon-dashboard)) center / contain no-repeat !important;
+  mask: var(--nav-icon, var(--icon-dashboard)) center / contain no-repeat !important;
+}
+
+section[data-testid="stSidebar"] a[href="/"]::before,
+section[data-testid="stSidebar"] a[href*="Home"]::before { --nav-icon: var(--icon-home); }
+section[data-testid="stSidebar"] a[href*="Login_Register"]::before { --nav-icon: var(--icon-login); }
+section[data-testid="stSidebar"] a[href*="Patient_Dashboard"]::before { --nav-icon: var(--icon-dashboard); }
+section[data-testid="stSidebar"] a[href*="Screening_Center"]::before { --nav-icon: var(--icon-screen); }
+section[data-testid="stSidebar"] a[href*="Doctors_Booking"]::before { --nav-icon: var(--icon-calendar); }
+section[data-testid="stSidebar"] a[href*="My_Appointments"]::before { --nav-icon: var(--icon-appointments); }
+section[data-testid="stSidebar"] a[href*="Reports"]::before { --nav-icon: var(--icon-reports); }
+section[data-testid="stSidebar"] a[href*="AI_Assistant"]::before { --nav-icon: var(--icon-assistant); }
+section[data-testid="stSidebar"] a[href*="Doctor_Dashboard"]::before { --nav-icon: var(--icon-doctor); }
+section[data-testid="stSidebar"] a[href*="Doctor_Schedule"]::before { --nav-icon: var(--icon-schedule); }
+section[data-testid="stSidebar"] a[href*="Doctor_Appointments"]::before { --nav-icon: var(--icon-appointments); }
+section[data-testid="stSidebar"] a[href*="Admin_Panel"]::before { --nav-icon: var(--icon-admin); }
+
+/* Make brand SVGs stable during reruns. */
+.brand-logo svg,
+.feature-icon svg,
+.info-icon svg {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+}
+.brand-logo svg {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+}
+
+/* Give pages a little more room when the sidebar is collapsed or the viewport is wide. */
+@media (min-width: 1280px) {
+  .main .block-container {
+    max-width: min(1640px, calc(100vw - 2rem)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .main .block-container {
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+
+
+
+/* PHASE_1_8_SYNTAX_HOTFIX_LAYOUT_START */
+header[data-testid="stHeader"], div[data-testid="stToolbar"], div[data-testid="stDecoration"], #MainMenu, footer {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+}
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stAppViewContainer"] > .main, .main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+.main .block-container, div[data-testid="stMainBlockContainer"], div[data-testid="stAppViewBlockContainer"] {
+  width: 100% !important;
+  max-width: none !important;
+  padding-top: 0.25rem !important;
+  padding-left: clamp(1rem, 2vw, 2.3rem) !important;
+  padding-right: clamp(1rem, 2vw, 2.3rem) !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.app-hero, .stTabs, .info-strip, .report-preview-shell {
+  width: min(100%, 1360px) !important;
+  max-width: 1360px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+section[data-testid="stSidebar"] {
+  width: 330px !important;
+  min-width: 330px !important;
+  max-width: 330px !important;
+}
+section[data-testid="stSidebar"][aria-expanded="false"] {
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 0 !important;
+  overflow: hidden !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-right: 0 !important;
+}
+section[data-testid="stSidebar"] a[href] {
+  min-height: 48px !important;
+  padding: 10px 14px !important;
+  border-radius: 16px !important;
+  color: #111827 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+}
+section[data-testid="stSidebar"] a[href] p,
+section[data-testid="stSidebar"] a[href] span {
+  color: #111827 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+.brand-box { padding: 16px !important; border-radius: 22px !important; }
+.brand-logo { width: 56px !important; height: 56px !important; }
+.brand-logo svg { width: 38px !important; height: 38px !important; }
+.feature-icon svg, .info-icon svg { width: 22px !important; height: 22px !important; }
+/* PHASE_1_8_SYNTAX_HOTFIX_LAYOUT_END */
+
+/* PHASE_1_9_NAVIGATION_LOGIN_POLISH_START */
+/* Balanced sidebar: icons are clear but not oversized; labels are slightly deeper. */
+section[data-testid="stSidebar"] a[href] {
+  min-height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 11px !important;
+  padding: 10px 14px !important;
+  border-radius: 17px !important;
+  color: #0f172a !important;
+  font-size: 16px !important;
+  font-weight: 760 !important;
+  letter-spacing: -0.012em !important;
+  text-decoration: none !important;
+}
+section[data-testid="stSidebar"] a[href] p,
+section[data-testid="stSidebar"] a[href] span {
+  color: #0f172a !important;
+  font-size: 16px !important;
+  font-weight: 760 !important;
+}
+section[data-testid="stSidebar"] a[href]::before {
+  content: "" !important;
+  display: inline-block !important;
+  flex: 0 0 22px !important;
+  width: 22px !important;
+  height: 22px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 22px 22px !important;
+  opacity: 1 !important;
+}
+section[data-testid="stSidebar"] a[href]:hover {
+  background: rgba(37, 99, 235, 0.075) !important;
+}
+section[data-testid="stSidebar"] a[href][aria-current="page"],
+section[data-testid="stSidebar"] a[href].active {
+  background: #e4eefc !important;
+}
+section[data-testid="stSidebar"] a[href$="/"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2010.5%2012%203l9%207.5%22/%3E%3Cpath%20d%3D%22M5%2010v10h14V10%22/%3E%3Cpath%20d%3D%22M9%2020v-6h6v6%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Login_Register"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M15%203h4a2%202%200%200%201%202%202v14a2%202%200%200%201-2%202h-4%22/%3E%3Cpath%20d%3D%22M10%2017l5-5-5-5%22/%3E%3Cpath%20d%3D%22M15%2012H3%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Patient_Dashboard"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221.5%22/%3E%3Crect%20x%3D%2214%22%20y%3D%223%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221.5%22/%3E%3Crect%20x%3D%223%22%20y%3D%2214%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221.5%22/%3E%3Crect%20x%3D%2214%22%20y%3D%2214%22%20width%3D%227%22%20height%3D%227%22%20rx%3D%221.5%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Screening_Center"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%2012s3.5-6%2010-6%2010%206%2010%206-3.5%206-10%206-10-6-10-6Z%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%223%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Doctors_Booking"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%224%22%20width%3D%2218%22%20height%3D%2217%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22M16%202v4%22/%3E%3Cpath%20d%3D%22M8%202v4%22/%3E%3Cpath%20d%3D%22M3%2010h18%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="My_Appointments"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M12%207v5l3%202%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Reports"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%202h9l5%205v15H6z%22/%3E%3Cpath%20d%3D%22M14%202v6h6%22/%3E%3Cpath%20d%3D%22M9%2013h6%22/%3E%3Cpath%20d%3D%22M9%2017h6%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="AI_Assistant"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%232563eb%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203l1.6%204.4L18%209l-4.4%201.6L12%2015l-1.6-4.4L6%209l4.4-1.6Z%22/%3E%3Cpath%20d%3D%22M19%2014l.8%202.2L22%2017l-2.2.8L19%2020l-.8-2.2L16%2017l2.2-.8Z%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Doctor_Dashboard"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%203v6a6%206%200%200%200%2012%200V3%22/%3E%3Cpath%20d%3D%22M9%203H5%22/%3E%3Cpath%20d%3D%22M19%203h-4%22/%3E%3Cpath%20d%3D%22M12%2015v2a4%204%200%200%200%208%200v-3%22/%3E%3Ccircle%20cx%3D%2220%22%20cy%3D%2212%22%20r%3D%222%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Doctor_Schedule"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22/%3E%3Cpath%20d%3D%22M12%206v6l4%202%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Doctor_Appointments"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%224%22%20y%3D%223%22%20width%3D%2216%22%20height%3D%2218%22%20rx%3D%222%22/%3E%3Cpath%20d%3D%22M9%207h6%22/%3E%3Cpath%20d%3D%22M8%2012h8%22/%3E%3Cpath%20d%3D%22M8%2016h5%22/%3E%3C/svg%3E") !important; }
+section[data-testid="stSidebar"] a[href*="Admin_Panel"]::before { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%222.55%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2022s8-4%208-10V5l-8-3-8%203v7c0%206%208%2010%208%2010Z%22/%3E%3Cpath%20d%3D%22M9%2012l2%202%204-5%22/%3E%3C/svg%3E") !important; }
+.sidebar-login-note {
+  background: #e7f0ff;
+  color: #0f3f7a;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.admin-metrics-spacer {
+  height: 26px;
+}
+/* Add breathing room specifically before the tab bar when admin metrics appear above it. */
+.element-container:has(.admin-metrics-spacer) {
+  margin-bottom: 0.2rem !important;
+}
+/* Keep the page wide while preserving a clean presentation. */
+div[data-testid="stMainBlockContainer"], .main .block-container, div.block-container {
+  max-width: min(1760px, calc(100vw - 2rem)) !important;
+  width: 100% !important;
+}
+/* PHASE_1_9_NAVIGATION_LOGIN_POLISH_END */

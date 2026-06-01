@@ -1,0 +1,15 @@
+[client]
+showSidebarNavigation = false
+
+[theme]
+base = "light"
+primaryColor = "#2563eb"
+backgroundColor = "#f6f9fc"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#0f172a"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+folderWatchBlacklist = ['_backup_before_emergency_repair_20260531_202250', '_backup_before_phase_1_1', '_backup_before_phase_1_2_clean_nav', '_backup_before_phase_1_3_session_nav_fix_v2', '_backup_before_phase_1_4_stability_polish', '_backup_before_phase_1_5_icon_rendering', '_backup_before_phase_1_6_icons_layout', '_backup_before_phase_1_7_layout_icon_refinement_20260530_220932', '_backup_before_phase_1_8_hotfix_syntax_20260530_221600', '_backup_before_phase_1_8_layout_sidebar_balance_20260530_221336', '_backup_before_phase_1_9_navigation_login_polish_20260530_223031', '_backup_before_phase_2_1_hotfix_repair_20260531_200356', '_backup_before_phase_2_1_hotfix_repair_20260531_200427', '_backup_before_phase_2_1_reports_rag_cleanup_20260531_195320', 'phase_1_1_hotfix', 'phase_1_2_clean_nav_patch', 'phase_1_3_session_nav_fix_v2', 'phase_1_4_stability_polish_patch', 'phase_1_5_icon_rendering_patch', 'phase_1_6_icons_layout_patch', 'phase_1_7_layout_icon_refinement_patch', 'phase_1_8_hotfix_syntax', 'phase_1_8_layout_sidebar_balance_patch', 'phase_1_9_navigation_login_polish_patch', 'phase_2_1_hotfix_repair', 'phase_2_1_repair_v2', 'phase_2_1_reports_rag_patch']
