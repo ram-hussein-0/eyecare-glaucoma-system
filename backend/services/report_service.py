@@ -51,7 +51,7 @@ def build_report(patient_id: int, title: str, screening_result_id: int | None, s
     if screening:
         summary_parts.append(f"Fundus screening result: {screening['risk_level']}.")
     if symptom:
-        summary_parts.append(f"Symptom triage result: {symptom['risk_level']}.")
+        summary_parts.append(f"Eye health assessment: {symptom['risk_level']}.")
     if appointment:
         summary_parts.append(f"Linked appointment: {appointment['appointment_date']} at {appointment['start_time']} with {appointment['doctor_name']}.")
     summary = " ".join(summary_parts) or "Patient report generated with available profile information."
@@ -152,11 +152,10 @@ def render_html_report(title: str, patient: dict, screening: dict | None, sympto
           <div class="row"><span class="label">Risk level</span><span class="value"><span class="badge {screening_badge}">{_safe(screening_level)}</span></span></div>
           <div class="row"><span class="label">Probability</span><span class="value">{probability}</span></div>
           <div class="row"><span class="label">Confidence</span><span class="value">{confidence}</span></div>
-          <div class="row"><span class="label">Model</span><span class="value">{_safe(screening.get('model_name') if screening else None)}</span></div>
           <div class="row"><span class="label">Date</span><span class="value">{_safe(screening.get('created_at') if screening else None)}</span></div>
         </div>
         <div class="card">
-          <h2>Symptom Triage</h2>
+          <h2>Eye Health Assessment</h2>
           <div class="row"><span class="label">Result</span><span class="value"><span class="badge {symptom_badge}">{_safe(symptom_level)}</span></span></div>
           <div class="row"><span class="label">Score</span><span class="value">{_safe(symptom.get('score') if symptom else None)}</span></div>
           <div class="row"><span class="label">Recommendation</span><span class="value">{_safe(symptom.get('recommendation') if symptom else None)}</span></div>
@@ -264,7 +263,7 @@ def render_pdf_report(pdf_path: Path, title: str, patient: dict, screening: dict
             ("Date", screening.get("created_at") or "—"),
         ])
     if symptom:
-        block("Symptom Triage", [
+        block("Eye Health Assessment", [
             ("Risk level", symptom.get("risk_level") or "—"),
             ("Score", symptom.get("score") or "—"),
             ("Recommendation", symptom.get("recommendation") or "—"),

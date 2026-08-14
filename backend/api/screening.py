@@ -11,6 +11,8 @@ from backend.services.model_service import GlaucomaModelService, ModelNotConfigu
 
 router = APIRouter(prefix="/screening", tags=["screening"])
 
+_model_service = GlaucomaModelService()
+
 
 @router.post("/analyze")
 def analyze(
@@ -27,9 +29,8 @@ def analyze(
     with destination.open("wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    service = GlaucomaModelService()
     try:
-        prediction = service.predict(destination)
+        prediction = _model_service.predict(destination)
     except ModelNotConfiguredError as exc:
         prediction = ScreeningPrediction(
             probability=None,

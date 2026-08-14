@@ -29,7 +29,7 @@ reports = api_get("/reports/mine")
 c1, c2, c3, c4 = st.columns(4)
 with c1: stat_card("Appointments", len(appointments), "Confirmed, completed, or cancelled")
 with c2: stat_card("Screening results", len(screenings), "Fundus image workflow")
-with c3: stat_card("Symptom triage", len(symptoms), "Warning-sign assessments")
+with c3: stat_card("Eye health assessments", len(symptoms), "Structured symptom reviews")
 with c4: stat_card("Reports", len(reports), "Generated summaries")
 
 section("Clinical overview", "Your latest activity and next actions.")

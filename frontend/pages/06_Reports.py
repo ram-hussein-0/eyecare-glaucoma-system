@@ -36,14 +36,14 @@ def _options(items: list[dict], labeler):
 
 
 screening_options = _options(screenings, lambda i, r: f"Screening {i} · {r.get('created_at', '—')} · {r.get('risk_level', '—')}")
-symptom_options = _options(symptoms, lambda i, r: f"Symptom assessment {i} · {r.get('created_at', '—')} · {r.get('risk_level', '—')}")
+symptom_options = _options(symptoms, lambda i, r: f"Eye health assessment {i} · {r.get('created_at', '—')} · {r.get('risk_level', '—')}")
 appointment_options = _options(appointments, lambda i, a: f"Appointment {i} · {a.get('appointment_date', '—')} · {a.get('doctor_name', '—')}")
 
 with st.expander("Create new report", expanded=True):
     title = st.text_input("Report title", value="Eye Screening Report")
     c1, c2, c3 = st.columns(3)
     s_label = c1.selectbox("Screening result", list(screening_options.keys()))
-    sy_label = c2.selectbox("Symptom assessment", list(symptom_options.keys()))
+    sy_label = c2.selectbox("Eye health assessment", list(symptom_options.keys()))
     a_label = c3.selectbox("Linked appointment", list(appointment_options.keys()))
     if st.button("Generate report", key="generate_patient_report", use_container_width=True):
         try:

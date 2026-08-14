@@ -92,9 +92,12 @@ CREATE TABLE IF NOT EXISTS symptom_assessments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     patient_id INTEGER NOT NULL REFERENCES patients(id) ON DELETE CASCADE,
     answers_json TEXT NOT NULL,
-    score INTEGER NOT NULL,
+    score REAL NOT NULL,
     risk_level TEXT NOT NULL,
     recommendation TEXT NOT NULL,
+    primary_finding TEXT,
+    confidence REAL,
+    details_json TEXT,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

@@ -331,13 +331,13 @@ def render_message(role: str, content: str) -> None:
 hero(
     "AI assistant",
     "Ask questions grounded in the indexed knowledge base. The assistant no longer reads operational database records directly.",
-    "RAG-only assistant",
+    "Knowledge assistant",
 )
 
 st.markdown(
     """
     <div class="ai-rag-banner">
-      <div class="ai-rag-banner-title">Knowledge-based medical support</div>
+      <div class="ai-rag-banner-title">Knowledge-based support</div>
       <p class="ai-rag-banner-text">
         This assistant searches the approved RAG documents through Chroma, reranks evidence with a local cross-encoder,
         then prepares an answer from the retrieved context. It does not generate SQL and does not access patient,
@@ -354,7 +354,7 @@ suggestions = [
     "كيف أقرأ التقرير الطبي؟",
     "What does glaucoma screening mean?",
     "ما الفرق بين screening والتشخيص النهائي؟",
-    "كيف أستفيد من الملفات المرفوعة في RAG؟",
+    "كيف يستخدم المساعد مصادر المعرفة المعتمدة؟",
 ]
 
 section("Suggested questions")
@@ -402,7 +402,7 @@ if prompt:
           <div>
             <div class="thinking-title">Thinking...</div>
             <div class="thinking-subtitle">
-              Searching Chroma, reranking evidence, and preparing a grounded answer from the RAG knowledge base.
+              Reviewing approved reference material and preparing an answer.
             </div>
           </div>
         </div>
@@ -423,7 +423,7 @@ if prompt:
 
         sources = result.get("sources") or []
         if sources:
-            with st.expander("Sources used by RAG"):
+            with st.expander("Reference sources"):
                 for source in sources:
                     st.markdown(
                         f"""

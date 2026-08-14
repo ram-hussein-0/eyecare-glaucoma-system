@@ -18,7 +18,7 @@ from frontend.app_utils.ui import hero, section, setup_page, stat_card, status_b
 
 setup_page("Admin Panel", "shield")
 require_role("admin")
-hero("Admin panel", "Manage doctor approvals, system metrics, appointment oversight, and RAG knowledge base content.", "System administration")
+hero("Admin panel", "Manage doctor approvals, system metrics, appointment oversight, and Knowledge base content.", "System administration")
 
 metrics = api_get("/admin/metrics")
 cols = st.columns(6)
@@ -28,7 +28,7 @@ for col, (k, v) in zip(cols, metrics.items()):
 
 st.markdown("<div class='admin-metrics-spacer'></div>", unsafe_allow_html=True)
 
-tabs = st.tabs(["Doctor approvals", "Users", "Appointments", "RAG knowledge base"])
+tabs = st.tabs(["Doctor approvals", "Users", "Appointments", "Knowledge base"])
 
 with tabs[0]:
     doctors = api_get("/admin/doctor-applications")
@@ -120,9 +120,9 @@ with tabs[3]:
         .rag-status-inactive { color: #b45309; background: #fffbeb; }
         </style>
         <div class="rag-admin-hero">
-            <h2>RAG knowledge and vector database</h2>
+            <h2>Knowledge base management</h2>
             <p>
-                Upload, clean, index, preview, disable, delete, and rebuild the local Chroma vector database.
+                Upload, review, enable, disable, delete, and refresh approved knowledge sources.
                 PDF files go through OCR, DOCX/TXT/MD are extracted directly, then all content is cleaned and embedded.
             </p>
         </div>
@@ -146,7 +146,7 @@ with tabs[3]:
             )
             upload_title = st.text_input("Optional title", key="rag_upload_title")
 
-            if st.button("Extract, upload, and rebuild Chroma", key="upload_extract_index_rag", use_container_width=True):
+            if st.button("Upload and index document", key="upload_extract_index_rag", use_container_width=True):
                 if not uploaded:
                     st.warning("Please choose a file first.")
                 else:
@@ -177,7 +177,7 @@ with tabs[3]:
                                 f"{prep.get('original_length', '—')} → {prep.get('cleaned_length', '—')} characters."
                             )
 
-                        with st.spinner("Rebuilding Chroma vector database..."):
+                        with st.spinner("Rebuilding Search index..."):
                             index_result = api_post("/admin/vector-store/rebuild", {})
 
                         st.success(
@@ -202,13 +202,13 @@ with tabs[3]:
         with st.form("rag_doc"):
             title = st.text_input("Title")
             content = st.text_area("Content", height=260)
-            submitted = st.form_submit_button("Add and rebuild Chroma", use_container_width=True)
+            submitted = st.form_submit_button("Add and index document", use_container_width=True)
 
         if submitted:
             try:
                 with st.spinner("Saving document..."):
                     api_post("/admin/rag-documents", {"title": title, "content": content})
-                with st.spinner("Rebuilding Chroma vector database..."):
+                with st.spinner("Rebuilding Search index..."):
                     result = api_post("/admin/vector-store/rebuild", {})
                 st.success(f"Document added and indexed. Chroma now has {result.get('chunks', '—')} chunks.")
                 st.rerun()
@@ -285,7 +285,7 @@ with tabs[3]:
             st.divider()
 
     with vector_tab:
-        st.markdown("### Chroma vector database")
+        st.markdown("### Search index")
         try:
             status = api_get("/admin/vector-store/status")
             c1, c2, c3, c4 = st.columns(4)
@@ -300,10 +300,10 @@ with tabs[3]:
             if status.get("error"):
                 st.warning(status["error"])
 
-            if st.button("Rebuild Chroma now", key="manual_rebuild_chroma", use_container_width=True):
-                with st.spinner("Rebuilding Chroma vector database..."):
+            if st.button("Refresh search index", key="manual_rebuild_chroma", use_container_width=True):
+                with st.spinner("Rebuilding Search index..."):
                     result = api_post("/admin/vector-store/rebuild", {})
-                st.success("Chroma vector database rebuilt.")
+                st.success("Search index rebuilt.")
                 st.json(result)
                 st.rerun()
 

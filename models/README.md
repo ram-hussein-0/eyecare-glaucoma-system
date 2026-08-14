@@ -1,23 +1,23 @@
-# Model integration folder
+# Deployed glaucoma screening model
 
-Place your trained glaucoma screening model checkpoint here, for example:
+The site uses the final ResNet50 glaucoma screening bundle:
 
-```text
-models/glaucoma_model.pt
-```
+- `resnet50_glaucoma_state_dict.pt`
+- `screening_config.json`
+- `calibrated_screening_config.json`
 
-Then configure `.env`:
+Runtime pipeline:
 
-```env
-MODEL_BACKEND=local_torch
-MODEL_PATH=models/glaucoma_model.pt
-MODEL_DEVICE=cpu
-```
+`fundus image -> FOV crop -> LAB CLAHE -> resize 224x224 -> ImageNet normalization -> ResNet50 -> temperature calibration -> Low / Uncertain / High Risk`
 
-Implement the marked local PyTorch sections in:
+The ResNet50 classifier head is:
 
-```text
-backend/services/model_service.py
-```
+`Dropout(0.30) -> Linear(2048, 256) -> ReLU -> Dropout(0.20) -> Linear(256, 2)`
 
-No Streamlit page needs to change.
+Positive class:
+
+`1 = Glaucoma`
+
+The active deployment uses the temperature-calibrated probability and the calibrated Low/Uncertain/High thresholds from `calibrated_screening_config.json`.
+
+This output is for preliminary screening and is not a final medical diagnosis.

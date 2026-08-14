@@ -30,11 +30,11 @@ hero(
 )
 
 if not backend_ok:
-    st.error("FastAPI backend is not reachable. Start it with: python3 -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000")
+    st.error("The service is temporarily unavailable. Please try again shortly.")
 
 cols = st.columns(3)
 with cols[0]:
-    feature_card("brain", "AI screening workflow", "Upload a fundus image and receive a structured glaucoma risk result from the configured model service once your trained model is connected.")
+    feature_card("eye", "Fundus image screening", "Upload a fundus image and receive a structured preliminary glaucoma-risk assessment.")
 with cols[1]:
     feature_card("calendar", "Appointment booking", "Browse approved ophthalmologists, select available slots, and manage confirmed or cancelled appointments.")
 with cols[2]:
