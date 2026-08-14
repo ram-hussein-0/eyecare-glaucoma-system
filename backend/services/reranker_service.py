@@ -74,6 +74,31 @@ class RerankerService:
     def mode(self) -> str:
         return _env("RERANKER_MODE", "cross_encoder").strip().lower()
 
+    def warm_up(self) -> None:
+        mode = self.mode()
+
+        if mode != "cross_encoder":
+            return
+
+        model = _load_cross_encoder()
+        batch_size = _int_env(
+            "RERANKER_BATCH_SIZE",
+            4,
+            1,
+            32,
+        )
+
+        model.predict(
+            [
+                (
+                    "glaucoma screening",
+                    "Glaucoma screening is a preliminary eye-health assessment.",
+                )
+            ],
+            batch_size=batch_size,
+            show_progress_bar=False,
+        )
+
     def _heuristic_rerank(self, query: str, chunks: list[Any], top_n: int) -> list[Any]:
         query_terms = set(re.findall(r"[\w\u0600-\u06FF]{3,}", query.lower()))
 

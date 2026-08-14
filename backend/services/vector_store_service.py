@@ -247,6 +247,34 @@ class RAGVectorStore:
             "db_dir": str(self.db_dir),
         }
 
+    def warm_up(self) -> dict:
+        # Prepare Chroma and the embedding model before the first user query.
+        # If the index is stale and the normal runtime policy allows automatic
+        # rebuilds, rebuild it now instead of during the first chat request.
+        rebuild_on_query = _bool_env(
+            "RAG_REBUILD_ON_QUERY",
+            True,
+        )
+
+        current = self.is_current()
+        rebuilt = False
+
+        if rebuild_on_query and not current:
+            self.rebuild()
+            current = True
+            rebuilt = True
+
+        collection = self._collection()
+        count = collection.count()
+
+        self.embedding.warm_up()
+
+        return {
+            "current": current,
+            "rebuilt": rebuilt,
+            "chunks": count,
+        }
+
     def _ensure_index(self) -> None:
         if _bool_env("RAG_REBUILD_ON_QUERY", True) and not self.is_current():
             self.rebuild()

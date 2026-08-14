@@ -1,4 +1,5 @@
 import os
+import json as jsonlib
 from pathlib import Path
 from typing import Any
 
@@ -73,6 +74,46 @@ def api_post(path: str, json: dict | None = None, files=None, data=None):
             kwargs["data"] = data
 
     return handle_response(requests.post(f"{API_BASE_URL}{path}", **kwargs))
+
+
+def api_post_stream(path: str, json: dict | None = None):
+    headers = _headers()
+    headers["Accept"] = "text/event-stream"
+
+    with requests.post(
+        f"{API_BASE_URL}{path}",
+        headers=headers,
+        json=json,
+        stream=True,
+        timeout=(10, 120),
+    ) as response:
+        if response.status_code >= 400:
+            return handle_response(response)
+
+        for raw_line in response.iter_lines(
+            chunk_size=1,
+            decode_unicode=True,
+        ):
+            if not raw_line:
+                continue
+
+            line = raw_line.strip()
+
+            if line.startswith(":"):
+                continue
+
+            if not line.startswith("data:"):
+                continue
+
+            payload = line[5:].strip()
+
+            if not payload:
+                continue
+
+            try:
+                yield jsonlib.loads(payload)
+            except jsonlib.JSONDecodeError:
+                continue
 
 
 def api_put(path: str, json: dict | None = None):

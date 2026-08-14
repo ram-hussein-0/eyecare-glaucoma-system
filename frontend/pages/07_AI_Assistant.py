@@ -14,9 +14,10 @@ if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 import streamlit as st
+from markdown_it import MarkdownIt
 
 from frontend.app_utils.auth import require_login
-from frontend.app_utils.api import api_post
+from frontend.app_utils.api import api_post_stream
 from frontend.app_utils.ui import hero, section, setup_page
 
 
@@ -159,6 +160,100 @@ st.markdown(
         padding: 2px 6px;
         color: #0f172a;
         font-size: .92em;
+        direction: ltr;
+        unicode-bidi: isolate;
+    }
+
+    .markdown-body {
+        unicode-bidi: plaintext;
+    }
+
+    .markdown-body > :first-child {
+        margin-top: 0;
+    }
+
+    .markdown-body > :last-child {
+        margin-bottom: 0;
+    }
+
+    .markdown-body p {
+        margin: 0 0 12px;
+        line-height: 1.88;
+    }
+
+    .markdown-body strong {
+        font-weight: 900;
+        color: #0f172a;
+    }
+
+    .markdown-body em {
+        font-style: italic;
+    }
+
+    .markdown-body ul,
+    .markdown-body ol {
+        margin: 8px 0 14px;
+        padding-inline-start: 1.6rem;
+    }
+
+    .markdown-body li {
+        margin-bottom: 7px;
+        unicode-bidi: plaintext;
+    }
+
+    .markdown-body li > p {
+        margin-bottom: 6px;
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4 {
+        color: #0f172a;
+        font-weight: 900;
+        line-height: 1.35;
+        margin: 16px 0 9px;
+    }
+
+    .markdown-body h1 { font-size: 1.35rem; }
+    .markdown-body h2 { font-size: 1.22rem; }
+    .markdown-body h3 { font-size: 1.10rem; }
+    .markdown-body h4 { font-size: 1.02rem; }
+
+    .markdown-body blockquote {
+        margin: 12px 0;
+        padding: 8px 14px;
+        border-inline-start: 4px solid rgba(37, 99, 235, .35);
+        background: #f8fafc;
+        border-radius: 10px;
+        color: #334155;
+    }
+
+    .markdown-body pre {
+        margin: 12px 0;
+        padding: 13px 14px;
+        overflow-x: auto;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        background: #0f172a;
+        direction: ltr;
+        text-align: left;
+        unicode-bidi: isolate;
+    }
+
+    .markdown-body pre code {
+        border: 0;
+        padding: 0;
+        background: transparent;
+        color: #e2e8f0;
+        white-space: pre;
+    }
+
+    .markdown-body a {
+        color: #2563eb;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        overflow-wrap: anywhere;
     }
 
     .answer-rtl {
@@ -261,42 +356,40 @@ def _has_arabic(text: str) -> bool:
     return bool(re.search(r"[\u0600-\u06FF]", text or ""))
 
 
-def _inline_markdown(text: str) -> str:
-    text = html.escape(text or "")
-    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
-    text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
-    return text
+_MARKDOWN_RENDERER = MarkdownIt(
+    "commonmark",
+    {
+        "html": False,
+        "linkify": False,
+        "typographer": False,
+    },
+)
 
 
 def _text_to_html(text: str) -> str:
-    text = (text or "").strip()
-    if not text:
+    clean_text = (text or "").strip()
+
+    if not clean_text:
         return ""
 
-    blocks: list[str] = []
+    direction_class = (
+        "answer-rtl"
+        if _has_arabic(clean_text)
+        else "answer-ltr"
+    )
 
-    for paragraph in re.split(r"\n\s*\n", text):
-        lines = [ln.rstrip() for ln in paragraph.splitlines() if ln.strip()]
-        if not lines:
-            continue
+    rendered = _MARKDOWN_RENDERER.render(
+        clean_text
+    )
 
-        rtl = _has_arabic(paragraph)
-        cls = "answer-rtl" if rtl else "answer-ltr"
-
-        if all(ln.lstrip().startswith(("-", "*", "•")) for ln in lines):
-            items = []
-            for ln in lines:
-                cleaned = ln.lstrip("-*• ").strip()
-                items.append(f"<li>{_inline_markdown(cleaned)}</li>")
-            blocks.append(f"<div class='{cls}'><ul>{''.join(items)}</ul></div>")
-        else:
-            body = "<br>".join(_inline_markdown(ln) for ln in lines)
-            blocks.append(f"<p class='{cls}' dir='auto'>{body}</p>")
-
-    return "\n".join(blocks)
+    return (
+        f"<div class='{direction_class} markdown-body' dir='auto'>"
+        f"{rendered}"
+        "</div>"
+    )
 
 
-def render_message(role: str, content: str) -> None:
+def _message_html(role: str, content: str) -> str:
     is_user = role == "user"
     row_class = "message-row user" if is_user else "message-row assistant"
     avatar_class = "avatar-box avatar-user" if is_user else "avatar-box avatar-assistant"
@@ -305,27 +398,32 @@ def render_message(role: str, content: str) -> None:
     text_html = _text_to_html(content)
 
     if is_user:
-        html_block = f"""
+        return f"""
         <div class="{row_class}">
           <div class="message-card">
             <div class="message-label">{label}</div>
             <div class="message-text" dir="auto">{text_html}</div>
           </div>
           <div class="{avatar_class}">{avatar}</div>
-        </div>
-        """
-    else:
-        html_block = f"""
-        <div class="{row_class}">
-          <div class="{avatar_class}">{avatar}</div>
-          <div class="message-card">
-            <div class="message-label">{label}</div>
-            <div class="message-text" dir="auto">{text_html}</div>
-          </div>
         </div>
         """
 
-    st.markdown(html_block, unsafe_allow_html=True)
+    return f"""
+    <div class="{row_class}">
+      <div class="{avatar_class}">{avatar}</div>
+      <div class="message-card">
+        <div class="message-label">{label}</div>
+        <div class="message-text" dir="auto">{text_html}</div>
+      </div>
+    </div>
+    """
+
+
+def render_message(role: str, content: str) -> None:
+    st.markdown(
+        _message_html(role, content),
+        unsafe_allow_html=True,
+    )
 
 
 hero(
@@ -391,8 +489,16 @@ for message in st.session_state.chat_history:
     render_message(message["role"], message["content"])
 
 if prompt:
-    st.session_state.chat_history.append({"role": "user", "content": prompt})
-    render_message("user", prompt)
+    st.session_state.chat_history.append(
+        {
+            "role": "user",
+            "content": prompt,
+        }
+    )
+    render_message(
+        "user",
+        prompt,
+    )
 
     thinking = st.empty()
     thinking.markdown(
@@ -400,9 +506,9 @@ if prompt:
         <div class="thinking-card">
           <div class="thinking-spinner"></div>
           <div>
-            <div class="thinking-title">Thinking...</div>
+            <div class="thinking-title">Preparing...</div>
             <div class="thinking-subtitle">
-              Reviewing approved reference material and preparing an answer.
+              Reviewing approved reference material.
             </div>
           </div>
         </div>
@@ -410,20 +516,146 @@ if prompt:
         unsafe_allow_html=True,
     )
 
+    assistant_slot = st.empty()
+
     try:
         start = time.time()
-        result = api_post("/assistant/chat", {"message": prompt})
-        elapsed = time.time() - start
+        answer_parts: list[str] = []
+        final_meta: dict = {}
+        last_render = 0.0
+        stream_error: str | None = None
+
+        for event in api_post_stream(
+            "/assistant/chat/stream",
+            {
+                "message":
+                    prompt,
+            },
+        ):
+            event_type = event.get(
+                "type"
+            )
+
+            if event_type == "status":
+                stage = event.get(
+                    "stage"
+                )
+
+                if stage == "generation":
+                    status_text = (
+                        "Preparing the answer..."
+                    )
+                else:
+                    status_text = (
+                        "Reviewing approved "
+                        "reference material..."
+                    )
+
+                thinking.markdown(
+                    f"""
+                    <div class="thinking-card">
+                      <div class="thinking-spinner"></div>
+                      <div>
+                        <div class="thinking-title">Working...</div>
+                        <div class="thinking-subtitle">
+                          {html.escape(status_text)}
+                        </div>
+                      </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+            elif event_type == "delta":
+                text_delta = str(
+                    event.get(
+                        "text",
+                        "",
+                    )
+                )
+
+                if not text_delta:
+                    continue
+
+                answer_parts.append(
+                    text_delta
+                )
+
+                thinking.empty()
+
+                now = time.monotonic()
+
+                if (
+                    now - last_render
+                    >= 0.05
+                ):
+                    assistant_slot.markdown(
+                        _message_html(
+                            "assistant",
+                            "".join(
+                                answer_parts
+                            ),
+                        ),
+                        unsafe_allow_html=True,
+                    )
+                    last_render = now
+
+            elif event_type == "error":
+                stream_error = str(
+                    event.get(
+                        "message",
+                        (
+                            "The answer stream "
+                            "was interrupted."
+                        ),
+                    )
+                )
+
+            elif event_type == "done":
+                final_meta = event
 
         thinking.empty()
 
-        answer = result.get("answer", "")
-        render_message("assistant", answer)
-        st.caption(f"Mode: {result.get('mode', 'unknown')} · Response time: {elapsed:.1f}s")
+        answer = "".join(
+            answer_parts
+        ).strip()
 
-        sources = result.get("sources") or []
+        if answer:
+            assistant_slot.markdown(
+                _message_html(
+                    "assistant",
+                    answer,
+                ),
+                unsafe_allow_html=True,
+            )
+
+        elapsed = (
+            time.time()
+            - start
+        )
+
+        mode = final_meta.get(
+            "mode",
+            "unknown",
+        )
+
+        st.caption(
+            f"Mode: {mode} "
+            f"· Response time: "
+            f"{elapsed:.1f}s"
+        )
+
+        sources = (
+            final_meta.get(
+                "sources"
+            )
+            or []
+        )
+
         if sources:
-            with st.expander("Reference sources"):
+            with st.expander(
+                "Reference sources"
+            ):
                 for source in sources:
                     st.markdown(
                         f"""
@@ -437,15 +669,74 @@ if prompt:
                         unsafe_allow_html=True,
                     )
 
-        if result.get("policy_note"):
-            st.info(result["policy_note"])
+        if final_meta.get(
+            "policy_note"
+        ):
+            st.info(
+                final_meta[
+                    "policy_note"
+                ]
+            )
 
-        st.session_state.chat_history.append({"role": "assistant", "content": answer})
+        if stream_error:
+            st.warning(
+                stream_error
+            )
+
+        if answer:
+            st.session_state.chat_history.append(
+                {
+                    "role":
+                        "assistant",
+                    "content":
+                        answer,
+                }
+            )
+        elif stream_error:
+            st.session_state.chat_history.append(
+                {
+                    "role":
+                        "assistant",
+                    "content":
+                        stream_error,
+                }
+            )
+        else:
+            fallback_error = (
+                "The assistant did not return "
+                "an answer."
+            )
+            st.error(
+                fallback_error
+            )
+            st.session_state.chat_history.append(
+                {
+                    "role":
+                        "assistant",
+                    "content":
+                        fallback_error,
+                }
+            )
 
     except Exception as exc:
         thinking.empty()
-        error_msg = f"Assistant request failed: {exc}"
-        st.error(error_msg)
-        st.session_state.chat_history.append({"role": "assistant", "content": error_msg})
+
+        error_msg = (
+            "Assistant request failed: "
+            f"{exc}"
+        )
+
+        st.error(
+            error_msg
+        )
+
+        st.session_state.chat_history.append(
+            {
+                "role":
+                    "assistant",
+                "content":
+                    error_msg,
+            }
+        )
 
 st.markdown("</div>", unsafe_allow_html=True)

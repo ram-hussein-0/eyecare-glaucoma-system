@@ -74,6 +74,11 @@ class EmbeddingService:
             return "query: " + (text or "")
         return text or ""
 
+    def warm_up(self) -> None:
+        # Load the cached local model and execute one tiny inference so the
+        # first real user query does not pay the model initialization cost.
+        self.encode_query("glaucoma screening")
+
     def encode_documents(self, texts: list[str]) -> np.ndarray:
         model = _load_sentence_transformer()
         formatted = [self._format_document(t) for t in texts]

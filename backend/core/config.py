@@ -28,9 +28,11 @@ class Settings(BaseSettings):
     model_api_key: str = ""
 
     llm_provider: str = "disabled"
-    llm_base_url: str = "https://api.openai.com/v1"
+    llm_base_url: str = ""
     llm_api_key: str = ""
-    llm_model: str = "gpt-4o-mini"
+    deepseek_api_key: str = ""
+    groq_api_key: str = ""
+    llm_model: str = ""
 
     @property
     def db_path(self) -> Path:
